@@ -5,4 +5,8 @@ class LinksController < ApplicationController
     @hot_links = Link.hot
     @user_links = current_user.links
   end
+
+  def edit
+    @link = Link.find(params[:id])
+  end
 end
