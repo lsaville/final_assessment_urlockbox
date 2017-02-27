@@ -1,4 +1,4 @@
-class Api::V1::LinksController < ApplicationController
+class Api::V1::LinksController < ActionController::API
 
   def create
     @link = Link.new link_params
@@ -24,6 +24,6 @@ class Api::V1::LinksController < ApplicationController
   private
 
   def link_params
-    params.permit(:title, :url, :read)
+    params.permit(:title, :url, :read, :user_id)
   end
 end
