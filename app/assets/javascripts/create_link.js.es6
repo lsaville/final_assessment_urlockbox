@@ -17,7 +17,7 @@ function createLink (event){
 
   $.post("/api/v1/links", link)
    .then( renderLink )
-   .fail( displayFailure )
+   .fail( displayNewFailure )
  }
 
 function getLinkData() {
@@ -44,7 +44,7 @@ function linkHTML(link) {
               </p>
               <p class="link_buttons">
                 <button class="mark-read">Mark as Read</button>
-                <button class='edit-link'>Edit</button>
+                <button id='${link.id}' class='edit-link'>Edit</button>
                 <button class='delete-link'>Delete</button>
               </p>
             </div>`
@@ -55,7 +55,7 @@ function clearLink() {
   $newLinkUrl.val("");
 }
 
-function displayFailure(failureData){
+function displayNewFailure(failureData){
   var error = JSON.parse(failureData.responseText)[0]
   $('#new-link').append(`<p>FAILED attempt to create new Link: ${error}</p>`);
 }
