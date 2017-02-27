@@ -1,0 +1,13 @@
+<h1>Edit <%= @link.title %></h1>
+
+<form id="edit-link">
+  <label>URL:
+    <input id="link-url" value="<%= @link.url %>">
+  </label>
+  <label>Title:
+    <input id="link-title" value="<%= @link.title %>">
+  </label>
+  <input type="submit" value="Edit Link">
+</form>
+
+<div id='user-data' data-urlid="<%=@link.id%>" data-id="<%= current_user.id %>"></div>
