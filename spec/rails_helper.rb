@@ -98,3 +98,11 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+def user
+  User.create(email: 'o@bama.com', password: 'michelle')
+end
+
+def log_in(user)
+  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+end
