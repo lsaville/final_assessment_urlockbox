@@ -39,4 +39,24 @@ describe 'user edits link', js: true do
       end
     end
   end
+
+  context 'they try to submit an invalid url' do
+    scenario 'they arent redirected and they are on the same page' do
+      bama = user
+      log_in(bama)
+      bama.links.create(title: 'cat vids', url: 'https://www.youtube.com/watch?v=tntOCGkgt98')
+      link = bama.links.first
+
+      visit "/links/#{link.id}/edit"
+
+      fill_in "URL:", with: "turing.io"
+      click_on "Edit Link"
+
+      sleep 1
+
+      expect(current_path).to eq("/links/#{link.id}/edit")
+
+      expect(page).to have_content("Url is not a valid URL")
+    end
+  end
 end
