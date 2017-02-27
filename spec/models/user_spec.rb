@@ -21,4 +21,12 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
   end
+
+  context 'relationships' do
+    it 'has many links' do
+      user = FactoryGirl.build(:user)
+
+      expect(user).to respond_to(:links)
+    end
+  end
 end
