@@ -41,10 +41,27 @@ RSpec.describe "can create links", :js => :true do
       login
       visit "/"
       fill_in "Title:", :with => "turing"
-      fill_in "URL:", :with => "turing.io"
+      fill_in "URL:", :with => "http://turing.io"
       click_on "Add Link"
 
       expect(page).to have_content("Url is not a valid URL")
+
+      within('#links-list') do
+        expect(page).to_not have_text("Turing")
+        expect(page).to_not have_text("http://turing.io")
+      end
+    end
+  end
+
+  context 'persistence across refresh' do
+    scenario 'a user having a link will see it if they hit refresh' do
+      login
+      visit "/"
+      fill_in "Title:", :with => "turing"
+      fill_in "URL:", :with => "http://turing.io"
+      click_on "Add Link"
+
+      page.evaluate_script("window.location.reload()")
 
       within('#links-list') do
         expect(page).to_not have_text("Turing")
