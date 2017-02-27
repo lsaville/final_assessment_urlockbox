@@ -6,6 +6,8 @@ RSpec.describe "can create links", :js => :true do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   }
 
+  let(:user) { User.find_by(email: 'o@bama.com') }
+
   context "valid url" do
     scenario "Create a new link" do
       login
@@ -41,7 +43,7 @@ RSpec.describe "can create links", :js => :true do
       login
       visit "/"
       fill_in "Title:", :with => "turing"
-      fill_in "URL:", :with => "http://turing.io"
+      fill_in "URL:", :with => "turing.io"
       click_on "Add Link"
 
       expect(page).to have_content("Url is not a valid URL")
@@ -56,16 +58,13 @@ RSpec.describe "can create links", :js => :true do
   context 'persistence across refresh' do
     scenario 'a user having a link will see it if they hit refresh' do
       login
-      visit "/"
-      fill_in "Title:", :with => "turing"
-      fill_in "URL:", :with => "http://turing.io"
-      click_on "Add Link"
+      user.links.create(title: 'Turing', url: 'http://turing.io')
 
-      page.evaluate_script("window.location.reload()")
+      visit "/"
 
       within('#links-list') do
-        expect(page).to_not have_text("Turing")
-        expect(page).to_not have_text("http://turing.io")
+        expect(page).to have_text("Turing")
+        expect(page).to have_text("http://turing.io")
       end
     end
   end
