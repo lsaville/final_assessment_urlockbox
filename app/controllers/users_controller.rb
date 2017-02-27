@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
+    @user = User.new(user_params)
+    if @user.save
       flash[:success] = "Successfully created account!"
-      session[:user_id] = user.id
+      session[:user_id] = @user.id
       redirect_to links_path
     else
-      redirect_to :signup
+      render :new
     end
   end
 
