@@ -5,9 +5,9 @@ describe 'user creates account' do
     scenario 'they are redirected to the links index page' do
       visit signup_path
 
-      fill_in "Email", with: "o@bama.com"
-      fill_in "Password", with: "michelle"
-      fill_in "Password Confirmation", with: "michelle"
+      fill_in "user_email", with: "o@bama.com"
+      fill_in "user_password", with: "michelle"
+      fill_in "user_password_confirmation", with: "michelle"
 
       click_on "Submit"
 
