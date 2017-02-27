@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to links_path
     else
+      flash[:error] = "Something went wrong!"
       redirect_to :login
     end
   end
