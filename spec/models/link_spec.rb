@@ -22,4 +22,12 @@ RSpec.describe Link, type: :model do
       expect(link).to respond_to(:user)
     end
   end
+
+  context 'default read value' do
+    it 'defaults to false' do
+      link = Link.new
+
+      expect(link.read).to eq(false)
+    end
+  end
 end
