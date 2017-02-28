@@ -45,6 +45,11 @@ function markAsRead(e) {
 
 function updateLinkStatus(link) {
   $(`.link[data-id=${link.id}]`).find(".link-read").text(link.read);
+  if (link.read == true) {
+    $(`.link[data-id=${link.id}]`).addClass("true")
+  } else {
+    $(`.link[data-id=${link.id}]`).removeClass("true")
+  }
 }
 
 function displayFailure(failureData){
