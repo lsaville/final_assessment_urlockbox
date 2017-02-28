@@ -2,7 +2,24 @@ var $newLinkTitle, $newLinkUrl;
 
 $(document).ready(function(){
   $('#links-list').on('click', 'button.mark-read', markAsRead)
+  $('#links-list').on('click', 'button.mark-unread', markAsUnRead)
 })
+
+function markAsUnRead(e){
+  e.preventDefault()
+
+  var $this = $(this);
+  var linkId = $this.parents('.link').data('id');
+  var linkUrl = $this.parents('.link').data('url');
+
+  $.ajax({
+    url: '/api/v1/links/' + linkId,
+    method: 'PATCH',
+    data: {read: false}
+  })
+   .then(updateLinkStatus)
+   .fail(displayFailure);
+}
 
 function markAsRead(e) {
   e.preventDefault();
