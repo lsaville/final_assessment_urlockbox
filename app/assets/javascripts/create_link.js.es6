@@ -30,12 +30,12 @@ function getLinkData() {
 
 function renderLink(link){
   $("#links-list").append( linkHTML(link) )
-  // clearLink();
+  clearLink();
 }
 
 function linkHTML(link) {
 
-    return `<div class='link' data-id='${link.id}' id="link-${link.id}">
+    return `<div class='link' data-id='${link.id}' data-url='${link.url}' id="link-${link.id}">
               <p class='link-title'>${ link.title }</p>
               <p class='link-url'>${ link.url }</p>
 
