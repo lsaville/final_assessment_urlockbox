@@ -11,9 +11,9 @@ $(document).ready(function(){
 })
 
 function addHotnessToReads(reads) {
-  userLinks = $('.link')
+  userLinks = $('.link');
   userLinks.each(function() {
-    checkLinks(reads, $(this))
+    checkLinks(reads, $(this));
   })
 }
 
@@ -21,21 +21,21 @@ function checkLinks(reads, link) {
   for (var i = 0; i < reads.length; i++) {
     var url = link.data('url');
     if (url === reads[i].url && i === 0) {
-      topLink(link)
+      topLink(link);
     } else if (url === reads[i].url) {
-      hotLink(link)
+      hotLink(link);
     }
   }
 }
 
 function topLink(link){
-  link.prepend("<p class='top'>Top Link!!!</p>")
+  link.prepend("<p class='top'>Top Link!!!</p>");
 }
 
 function hotLink(link){
-  link.prepend("<p class='hot'>Hot</p>")
+  link.prepend("<p class='hot'>Hot</p>");
 }
 
 function itDidntWork() {
-  console.log("didntwork")
+  console.log("didntwork");
 }
