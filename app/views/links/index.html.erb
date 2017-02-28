@@ -14,7 +14,7 @@
       <p class='link-title'> <%= link.title %> </p>
       <p class='link-url'> <%= link.url %> </p>
 
-      <p class="link_read">
+      <p class="link-read">
         <%= link.read %>
       </p>
       <p class="link_buttons">
@@ -25,14 +25,4 @@
     </div>
   <% end %>
 </div>
-
-<h2>Hot Reads!</h2>
-<ol id="hot-reads">
-<% @hot_links.each do |read| %>
-  <li class='hot-read'>
-    <a href="<%= read.url %>"><%= read.url %></a>
-  </li>
-<% end %>
-</ol>
-<img src="https://m.popkey.co/4c7272/QL6mJ.gif">
 <div id='user-data' data-id="<%= current_user.id %>"></div>
