@@ -38,7 +38,7 @@ function markAsRead(e) {
 
   $.ajax({
     type: "POST",
-    url: 'http://localhost:8080/api/v1/reads',
+    url: 'https://sheltered-springs-63378.herokuapp.com/api/v1/reads',
     data: {read: linkUrl},
   })
 }

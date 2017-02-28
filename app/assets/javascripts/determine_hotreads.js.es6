@@ -3,7 +3,7 @@ var userLinks;
 
 $(document).ready(function(){
   $.ajax({
-    url: 'http://localhost:8080/api/v1/hotreads',
+    url: 'https://sheltered-springs-63378.herokuapp.com/api/v1/hotreads',
     method: 'GET'
   })
     .done( addHotnessToReads )
